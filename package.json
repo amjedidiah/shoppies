@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap --hoist --ignore-prepublish",
+    "changed": "lerna changed -a --graph --json -l",
+    "list": "lerna ls -a --graph --json -l",
+    "precommit": "lerna run --concurrency 1 --stream precommit"
+  },
+  "pre-commit": "precommit",
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "pre-commit": "^1.2.2"
+  }
+}
