@@ -1,0 +1,52 @@
+{
+  "name": "shoppies-api",
+  "version": "0.0.1",
+  "description": "API to manage movie nominations for Shoppies award",
+  "keywords": [
+    "movie",
+    "awards",
+    "nominations",
+    "shopies",
+    "react"
+  ],
+  "author": "amjedidiah <imunacode@gmail.com>",
+  "homepage": "https://github.com/amjedidiah/shoppies#readme",
+  "license": "MIT",
+  "main": "src/app.js",
+  "directories": {
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amjedidiah/shoppies.git"
+  },
+  "scripts": {
+    "api:build": "api-console build -t \"RAML 1.0\" api.raml",
+    "preapi:serve": "start chrome http://127.0.0.1:8000",
+    "api:serve": "api-console serve build",
+    "api:launch": "yarn run api:build && yarn run api:serve",
+    "check": "yarn lint && yarn test",
+    "dev": "nodemon app.js",
+    "lint": "eslint \"src/**/*.js\" --fix || false",
+    "start": "node src/app.js",
+    "test": "jest --passWithNoTests",
+    "test:cover": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "bugs": {
+    "url": "https://github.com/amjedidiah/shoppies/issues"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.7"
+  }
+}

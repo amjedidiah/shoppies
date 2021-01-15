@@ -1,27 +1,16 @@
 {
   "name": "root",
   "private": true,
-  "author": {
-    "name": "Amaraegbu Jedidiah",
-    "email": "imunacode@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/amjedidiah/shoppies.git"
-  },
-  "bugs": {
-    "url": "https://github.com/amjedidiah/shoppies/issues"
-  },
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist --ignore-prepublish",
-    "changed": "lerna changed -a --graph --json -l",
-    "list": "lerna ls -a --graph --json -l",
-    "lint": "lerna run lint --stream",
-    "test": "lerna run test --stream",
-    "prestart": "lerna run --concurrency 1 --stream check",
-    "start": "lerna run start --stream"
+    "api": "npx lerna run --parallel --scope shoppies-api api:launch",
+    "list": "npx lerna ls -a --graph --json",
+    "lint": "npx lerna run lint",
+    "test": "npx lerna run test",
+    "predev": "npx lerna run --parallel check",
+    "dev": "npx lerna run dev --parallel",
+    "start": "npx lerna run start --parallel"
   },
-  "pre-commit": "prestart",
+  "pre-commit": "predev",
   "devDependencies": {
     "lerna": "^3.22.1",
     "pre-commit": "^1.2.2"

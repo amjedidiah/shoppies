@@ -1,0 +1,48 @@
+#%RAML 1.0
+title: shoppies-api
+version: 1.0.0
+securitySchemes:
+  Bearer:
+      description: |
+        This scheme validates request by using a token
+      type: x-custom
+      displayName: Bearer
+      describedBy:
+        headers:
+          Authorization: Token
+baseUri: http://localhost:8008/api
+mediaType: application/json
+types:
+    Error:
+        description: Error request response
+        type: Response
+        properties:
+            data: nil
+            error:
+                type: boolean
+                example: true
+    NotFound:
+        description: Error request response for NotFound
+        type: Error
+    Response:
+        description: A request's response
+        type: object
+        properties:
+            data:
+                description: A request's response data
+                type: nil | object | array
+            error:
+                description: A request's response error status
+                type: boolean
+            message:
+                description: A request's response message
+                type: any
+    Success:
+        description: Success request Response
+        type: Response
+    Token:
+        description: |
+            A valid token
+        type: string
+        example: |
+            Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImltdW5hY29kZUBnbWFpbC5jb20iLCJpZCI6IjVlZGRmMGMxYzc1ZTRlMDAxNzM5MDIwMyIsImV4cCI6MTU5Njg4Nzk1MiwiaWF0IjoxNTkxNzAzOTUyfQ.3eIfJs-C2uPvFqEkFpo8hA1P1dEsxFPr3T_nBJmRgEU

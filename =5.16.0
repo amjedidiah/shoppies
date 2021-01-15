@@ -1,0 +1,98 @@
+shoppies-api: yarn add v1.22.5
+shoppies-api: [1/4] Resolving packages...
+shoppies-api: [2/4] Fetching packages...
+shoppies-api: [3/4] Linking dependencies...
+shoppies-api: [4/4] Building fresh packages...
+shoppies-api: success Saved lockfile.
+shoppies-api: success Saved 86 new dependencies.
+shoppies-api: info Direct dependencies
+shoppies-api: ├─ eslint-config-google@0.14.0
+shoppies-api: └─ eslint@7.17.0
+shoppies-api: info All dependencies
+shoppies-api: ├─ @babel/code-frame@7.12.11
+shoppies-api: ├─ @babel/helper-validator-identifier@7.12.11
+shoppies-api: ├─ @babel/highlight@7.10.4
+shoppies-api: ├─ @eslint/eslintrc@0.2.2
+shoppies-api: ├─ acorn-jsx@5.3.1
+shoppies-api: ├─ acorn@7.4.1
+shoppies-api: ├─ ajv@6.12.6
+shoppies-api: ├─ ansi-colors@4.1.1
+shoppies-api: ├─ ansi-regex@5.0.0
+shoppies-api: ├─ ansi-styles@4.3.0
+shoppies-api: ├─ argparse@1.0.10
+shoppies-api: ├─ astral-regex@2.0.0
+shoppies-api: ├─ balanced-match@1.0.0
+shoppies-api: ├─ brace-expansion@1.1.11
+shoppies-api: ├─ callsites@3.1.0
+shoppies-api: ├─ chalk@4.1.0
+shoppies-api: ├─ color-convert@2.0.1
+shoppies-api: ├─ color-name@1.1.4
+shoppies-api: ├─ concat-map@0.0.1
+shoppies-api: ├─ cross-spawn@7.0.3
+shoppies-api: ├─ debug@4.3.1
+shoppies-api: ├─ deep-is@0.1.3
+shoppies-api: ├─ doctrine@3.0.0
+shoppies-api: ├─ emoji-regex@8.0.0
+shoppies-api: ├─ enquirer@2.3.6
+shoppies-api: ├─ escape-string-regexp@1.0.5
+shoppies-api: ├─ eslint-config-google@0.14.0
+shoppies-api: ├─ eslint-scope@5.1.1
+shoppies-api: ├─ eslint-utils@2.1.0
+shoppies-api: ├─ eslint-visitor-keys@1.3.0
+shoppies-api: ├─ eslint@7.17.0
+shoppies-api: ├─ espree@7.3.1
+shoppies-api: ├─ esprima@4.0.1
+shoppies-api: ├─ esquery@1.3.1
+shoppies-api: ├─ esrecurse@4.3.0
+shoppies-api: ├─ estraverse@5.2.0
+shoppies-api: ├─ fast-json-stable-stringify@2.1.0
+shoppies-api: ├─ fast-levenshtein@2.0.6
+shoppies-api: ├─ file-entry-cache@6.0.0
+shoppies-api: ├─ flat-cache@3.0.4
+shoppies-api: ├─ flatted@3.1.0
+shoppies-api: ├─ fs.realpath@1.0.0
+shoppies-api: ├─ functional-red-black-tree@1.0.1
+shoppies-api: ├─ glob-parent@5.1.1
+shoppies-api: ├─ glob@7.1.6
+shoppies-api: ├─ has-flag@4.0.0
+shoppies-api: ├─ import-fresh@3.3.0
+shoppies-api: ├─ imurmurhash@0.1.4
+shoppies-api: ├─ inflight@1.0.6
+shoppies-api: ├─ inherits@2.0.4
+shoppies-api: ├─ is-extglob@2.1.1
+shoppies-api: ├─ is-glob@4.0.1
+shoppies-api: ├─ isexe@2.0.0
+shoppies-api: ├─ js-tokens@4.0.0
+shoppies-api: ├─ json-schema-traverse@0.4.1
+shoppies-api: ├─ json-stable-stringify-without-jsonify@1.0.1
+shoppies-api: ├─ lodash@4.17.20
+shoppies-api: ├─ lru-cache@6.0.0
+shoppies-api: ├─ ms@2.1.2
+shoppies-api: ├─ natural-compare@1.4.0
+shoppies-api: ├─ optionator@0.9.1
+shoppies-api: ├─ parent-module@1.0.1
+shoppies-api: ├─ path-is-absolute@1.0.1
+shoppies-api: ├─ path-key@3.1.1
+shoppies-api: ├─ progress@2.0.3
+shoppies-api: ├─ punycode@2.1.1
+shoppies-api: ├─ regexpp@3.1.0
+shoppies-api: ├─ require-from-string@2.0.2
+shoppies-api: ├─ resolve-from@4.0.0
+shoppies-api: ├─ rimraf@3.0.2
+shoppies-api: ├─ semver@7.3.4
+shoppies-api: ├─ shebang-command@2.0.0
+shoppies-api: ├─ shebang-regex@3.0.0
+shoppies-api: ├─ slice-ansi@4.0.0
+shoppies-api: ├─ sprintf-js@1.0.3
+shoppies-api: ├─ string-width@4.2.0
+shoppies-api: ├─ strip-json-comments@3.1.1
+shoppies-api: ├─ supports-color@7.2.0
+shoppies-api: ├─ table@6.0.7
+shoppies-api: ├─ text-table@0.2.0
+shoppies-api: ├─ type-check@0.4.0
+shoppies-api: ├─ type-fest@0.8.1
+shoppies-api: ├─ v8-compile-cache@2.2.0
+shoppies-api: ├─ which@2.0.2
+shoppies-api: ├─ word-wrap@1.2.3
+shoppies-api: └─ yallist@4.0.0
+shoppies-api: Done in 18.63s.
