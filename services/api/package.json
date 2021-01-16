@@ -31,7 +31,7 @@
     "check": "yarn lint && yarn test",
     "dev": "nodemon app.js",
     "lint": "eslint \"src/**/*.js\" --fix || false",
-    "start": "node src/app.js",
+    "start": "node app.js",
     "test": "jest --passWithNoTests",
     "test:cover": "jest --coverage",
     "test:watch": "jest --watch"
@@ -40,9 +40,14 @@
     "url": "https://github.com/amjedidiah/shoppies/issues"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "mongoose": "^5.11.12",
+    "morgan": "^1.10.0",
+    "validator": "^13.5.2"
   },
   "devDependencies": {
     "eslint": "^7.17.0",

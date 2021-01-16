@@ -1,15 +1,6 @@
 #%RAML 1.0
 title: shoppies-api
 version: 1.0.0
-securitySchemes:
-  Bearer:
-      description: |
-        This scheme validates request by using a token
-      type: x-custom
-      displayName: Bearer
-      describedBy:
-        headers:
-          Authorization: Token
 baseUri: http://localhost:8008/api
 mediaType: application/json
 types:
@@ -68,29 +59,20 @@ types:
                   Best Foreign Language Film,
                   Best Makeup]
                 example: Best Makeup
-            movieID: MovieID
-            nominationID:
+            email:
+                description: A user's email address
+                type: string
+                pattern: ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$
+                example: "john.doe@example.com"
+            id:
                 description: Concatenation of imdbIDs
                 type: string
                 example: tt2872732tt2872732tt2872732
-            userID:
-                description: An user's ID
-                type: string
-                example: tt2872732
-    Token:
-        description: |
-            A valid token
-        type: string
-        example: |
-            Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImltdW5hY29kZUBnbWFpbC5jb20iLCJpZCI6IjVlZGRmMGMxYzc1ZTRlMDAxNzM5MDIwMyIsImV4cCI6MTU5Njg4Nzk1MiwiaWF0IjoxNTkxNzAzOTUyfQ.3eIfJs-C2uPvFqEkFpo8hA1P1dEsxFPr3T_nBJmRgEU
+            movieID: MovieID
 /nominations:
     description: Nomination endpoint
-    securedBy:
-      - Bearer
     get:
         description: Get all nominations
-        securedBy:
-        - Bearer
         responses:
             200:
                 description: |
@@ -129,7 +111,7 @@ types:
                         message:
                             description: Response message
                             type: string
-                            example: Nominations not found
+                            example: No nominations found
             500:
                 description: |
                   Internal Server Error
@@ -175,7 +157,45 @@ types:
                         example: Movie nominated successfully
         400:
             description: |
-                Missen or incorrect field
+                Missen field
+            body:
+                application/json:
+                  description: Field error response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: nil
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: true
+                    message:
+                        description: Response message
+                        type: string
+                        example: All fields are required
+        401:
+            description: |
+                Invalid email
+            body:
+                application/json:
+                  description: Field error response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: nil
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: true
+                    message:
+                        description: Response message
+                        type: string
+                        example: Email is invalid
+        402:
+            description: |
+                Invalid category
             body:
                 application/json:
                   description: Field error response
