@@ -13,36 +13,220 @@ securitySchemes:
 baseUri: http://localhost:8008/api
 mediaType: application/json
 types:
-    Error:
-        description: Error request response
-        type: Response
-        properties:
-            data: nil
-            error:
-                type: boolean
-                example: true
-    NotFound:
-        description: Error request response for NotFound
-        type: Error
-    Response:
-        description: A request's response
+    MovieID:
+        description: Movie ID from imdb
+        type: string
+        example: tt2872732
+    # Movie:
+    #     description: A movie
+    #     type: object
+    #     properties:
+    #       actors:
+    #         description: Movie actors
+    #         type: array
+    #         example: [Scarlett Johansson, Morgan Freeman, Choi Min-sik, Amr Waked]
+    #       genre:
+    #         description: Movie genre
+    #         type: array
+    #         example: [Action, Thriller, Sci-Fi]
+    #       imdbID: MovieID
+    #       imdbRating:
+    #         description: Movie rating from IMDB rating
+    #         type: string
+    #         pattern: ^(([1-9][0-9]*)|[0])[.]([0-9]{1})$
+    #         example: "6.4"
+    #       plot:
+    #         description: Movie plot
+    #         type: string
+    #         example: |
+    #           A woman, accidentally caught in a dark deal, turns the tables on her captors and transforms into a merciless warrior evolved beyond human logic.
+    #       released:
+    #           description: Movie release year
+    #           type: string
+    #           pattern: ^\d{4}$
+    #           example: "2014"
+    #       title:
+    #         description: Movie title
+    #         type: string
+    #         example: Lucy
+    Nomination:
+        description: Movie nominations
         type: object
         properties:
-            data:
-                description: A request's response data
-                type: nil | object | array
-            error:
-                description: A request's response error status
-                type: boolean
-            message:
-                description: A request's response message
-                type: any
-    Success:
-        description: Success request Response
-        type: Response
+            category:
+                description: Nomination category
+                type: string
+                enum:
+                  [Best Actor/Best Actress,
+                  Best Adapted Screenplay,
+                  Best Original Screenplay,
+                  Best Animated Feature Film,
+                  Best Cinematography,
+                  Best Costume Design,
+                  Best Director,
+                  Best Film Editing,
+                  Best Foreign Language Film,
+                  Best Makeup]
+                example: Best Makeup
+            movieID: MovieID
+            nominationID:
+                description: Concatenation of imdbIDs
+                type: string
+                example: tt2872732tt2872732tt2872732
+            userID:
+                description: An user's ID
+                type: string
+                example: tt2872732
     Token:
         description: |
             A valid token
         type: string
         example: |
             Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImltdW5hY29kZUBnbWFpbC5jb20iLCJpZCI6IjVlZGRmMGMxYzc1ZTRlMDAxNzM5MDIwMyIsImV4cCI6MTU5Njg4Nzk1MiwiaWF0IjoxNTkxNzAzOTUyfQ.3eIfJs-C2uPvFqEkFpo8hA1P1dEsxFPr3T_nBJmRgEU
+/nominations:
+    description: Nomination endpoint
+    securedBy:
+      - Bearer
+    get:
+        description: Get all nominations
+        securedBy:
+        - Bearer
+        responses:
+            200:
+                description: |
+                    Nominations fetched successfully
+                body:
+                    application/json:
+                      description: Success request response
+                      type: object
+                      properties:
+                        data:
+                            description: Response data
+                            type: Nomination[]
+                        error:
+                            description: Response error
+                            type: boolean
+                            example: false
+                        message:
+                            description: Response message
+                            type: string
+                            example: Nominations fetched successfully
+            404:
+                description: |
+                    No application found
+                body:
+                    application/json:
+                      description: Not found error response
+                      type: object
+                      properties:
+                        data:
+                            description: Response data
+                            type: nil
+                        error:
+                            description: Response error
+                            type: boolean
+                            example: true
+                        message:
+                            description: Response message
+                            type: string
+                            example: Nominations not found
+            500:
+                description: |
+                  Internal Server Error
+                body:
+                  application/json:
+                      description: Error response
+                      type: object
+                      properties:
+                        data:
+                            description: Response data
+                            type: nil
+                        error:
+                            description: Response error
+                            type: boolean
+                            example: true
+                        message:
+                            description: Response message
+                            type: string
+                            example: Internal server error
+    post:
+      description: Save a nomination
+      body:
+        application/json: Nomination
+      responses:
+        201:
+          description: |
+              Successful nomination
+          body:
+              application/json:
+                  description: Success request response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: Nomination
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: false
+                    message:
+                        description: Response message
+                        type: string
+                        example: Movie nominated successfully
+        400:
+            description: |
+                Missen or incorrect field
+            body:
+                application/json:
+                  description: Field error response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: nil
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: true
+                    message:
+                        description: Response message
+                        type: string
+                        example: Invalid category
+        409:
+            description: |
+                Nomination already exists
+            body:
+                application/json:
+                  description: Duplicate request response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: nil
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: true
+                    message:
+                        description: Response message
+                        type: string
+                        example: You have already nominated this movie for this category
+        500:
+            description: |
+              Internal Server Error
+            body:
+              application/json:
+                  description: Error response
+                  type: object
+                  properties:
+                    data:
+                        description: Response data
+                        type: nil
+                    error:
+                        description: Response error
+                        type: boolean
+                        example: true
+                    message:
+                        description: Response message
+                        type: string
+                        example: Internal server error
