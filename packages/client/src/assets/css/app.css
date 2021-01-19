@@ -1,0 +1,100 @@
+html,
+body {
+  --primary--custom: #0e0c4e;
+  --primary--custom--2: #0043fe;
+  background: #e6e6ed;
+}
+
+.badge-primary--custom {
+  background: var(--primary--custom);
+  color: var(--white);
+}
+
+.badge-gold--custom {
+  background: gold;
+  color: var(--white);
+}
+
+.bg-primary--custom {
+  background: var(--primary--custom);
+}
+
+.bg-primary--custom--2 {
+  background: var(--primary--custom--2);
+}
+
+.btn-outline-white {
+  color: var(--white);
+  border-color: #fff;
+}
+
+.btn-outline-white:hover,
+.btn-white {
+  color: var(--primary--custom);
+  background: var(--white);
+  font-weight: bolder;
+  border: none;
+}
+
+.input-group-prepend--custom {
+  position: relative;
+  left: 8px;
+}
+
+.input--search.show {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+}
+
+.input--search.show .dropdown-menu {
+  width: 100%;
+  height: calc(100vh - 40px);
+}
+
+.text-primary--custom {
+  color: var(--primary--custom);
+}
+
+.text-primary--custom--2 {
+  color: var(--primary--custom--2);
+}
+
+.text-gold {
+  color: gold;
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.badge-gold--custom,
+.text-gold,
+.text-white {
+  text-shadow: 1px 1px #0e0c4e;
+}
+
+@media (min-width: 922px) {
+  .btn-lg-xl {
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: 0.3rem;
+  }
+}
+
+@media (min-width: 1198px) {
+  .input--search.show {
+    position: relative !important;
+  }
+}
+
+@media (min-width: 1198px) {
+  .input--search.show .dropdown-menu {
+    max-height: 75vh;
+    height: fit-content;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}

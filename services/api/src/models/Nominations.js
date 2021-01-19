@@ -1,8 +1,6 @@
 // Module imports
 const mongoose = require('mongoose');
 
-// Data imports
-const categories = require('../data/categories');
 
 // Mongoose Schema
 const {Schema} = mongoose;
@@ -10,23 +8,17 @@ const {Schema} = mongoose;
 // Mongoose User Schema
 const NominationsSchema = new Schema(
     {
-      category: {
-        type: String,
-        enum: categories,
-      },
-      email: {
-        type: String,
-        match:
-        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-        required: true,
-        unique: true,
-        trim: true,
-      },
       isDeleted: {
         default: false,
         type: Boolean,
       },
       movieID: String,
+      user: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true,
+      },
     },
     {
       timestamps: true,
@@ -40,7 +32,7 @@ NominationsSchema.methods.generateJWT = () => {
 
   return jwt.sign(
       {
-        email: this.email,
+        user: this.user,
         id: this.id,
         exp: parseInt(expirationDate.getTime() / 1000, 10),
       },
@@ -53,7 +45,7 @@ NominationsSchema.methods.toAuthJSON = () => {
     id: this.id,
     category: this.category,
     movieID: this.movieID,
-    email: this.email,
+    user: this.user,
   };
 };
 

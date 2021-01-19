@@ -1,0 +1,47 @@
+.navbar-brand {
+  top: -5px;
+  position: relative;
+}
+
+.nav-item .nav-link.nav-link--custom,
+.nav-item .nav-link.nav-link--custom:hover,
+.nav-item .nav-link.nav-link--custom.active {
+  color: #fff;
+}
+
+#header .nav-link.nav-link--header[aria-expanded='true'],
+#header .nav-link.nav-link--header:hover {
+  background: #fff;
+}
+
+.order-7 {
+  order: 7;
+}
+
+@media (min-width: 992px) {
+  .order-7 {
+    order: unset;
+  }
+}
+
+/* #header, #header .container, #header .collapse {
+  flex-wrap: wrap;
+}
+
+.form--header {
+  order: 7;
+  flex-basis: 100%;
+}
+
+@media (min-width: 992px) {
+  #header, #header .container, #header .collapse {
+    flex-wrap: no-wrap;
+  }
+}
+
+@media (min-width: 992px) {
+  .form--header {
+    order: unset;
+    flex-basis: unset;
+  }
+} */

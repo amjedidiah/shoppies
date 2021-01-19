@@ -1,0 +1,19 @@
+.jumbotron {
+  height: 85vh;
+}
+
+.jumbo-title {
+  font-size: 2rem;
+}
+
+@media (min-width: 576px) {
+  .jumbo-title {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .jumbo-title {
+    font-size: 6rem;
+  }
+}

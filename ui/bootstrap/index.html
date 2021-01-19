@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>shoppies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body><header>
+  <nav
+    class="navbar navbar-expand navbar-light bg-transparent fixed-top"
+    id="header"
+  >
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand d-block just-height" href="#"
+        ><img
+          src="assets/img/logo.png"
+          alt="Shoppies logo"
+          class="img-fluid"
+          width="100"
+          loading="lazy"
+      /></a>
+      <form class="form-inline form--header flex-grow-1 mr-lg-5">
+        <div class="input-group input-group--custom input--search rounded-pill">
+          <div class="input-group-prepend--custom border-0 py-2">
+            <div
+              class="input-group-text bg-transparent border-0 text-primary--custom"
+            >
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <input
+            type="search"
+            class="form-control form-control--custom rounded-pill py-1 dropdown-toggle"
+            placeholder="Search movie..."
+            aria-label="Search"
+            id="dropdownSearchInput"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+          />
+          <ul
+            class="dropdown-menu dropdown-menu-bottom p-4 w-100 rounded"
+            aria-labelledby="dropdownSearchInput"
+          >
+            <li class="dropdown-header px-0 text-uppercase">Related movies</li>
+
+            <li class="dropdown-item p-0 mb-3">
+              <div>
+                <div class="img-holder mr-3">
+                  <img
+                    src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                    class="img-fluid img-fluid--search ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
+                    alt="Lucy"
+                    srcset="
+                      https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg 4.18x
+                    "
+                  />
+                </div>
+                <div class="">
+                  <p>
+                    <strong>Lucy</strong>
+                    <span class="badge badge-primary--custom text-white"
+                      >2014</span
+                    >
+                  </p>
+                </div>
+                <div>
+                  <p class="my-2">
+                    <button class="btn btn-white rounded-pill" type="button">
+                      <span class="mr-2 text-success"
+                        ><i class="fas fa-thumbs-up"></i
+                      ></span>
+                      Nominate</button
+                    ><button
+                      class="btn btn-outline-danger rounded-pill"
+                      type="button"
+                    >
+                      <span class="mr-2"><i class="fas fa-trash"></i></span>
+                      Cancel
+                    </button>
+                  </p>
+                  <p class="my-2">
+                    <button class="btn btn-white rounded-pill" type="button">
+                      <span class="mr-2 text-primary--custom--2"
+                        ><i class="fas fa-thumbs-up"></i
+                      ></span>
+                      Google</button
+                    ><button class="btn btn-white rounded-pill" type="button">
+                      <span class="mr-2 text-primary--custom--2"
+                        ><i class="fas fa-thumbs-up"></i
+                      ></span>
+                      Anonymously
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+      <ul class="navbar-nav mr-auto ml-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link--custom" href="#nominations"
+            >Nominations</a
+          >
+        </li>
+      </ul>
+      <form class="form-inline mb-3 mb-sm-0 mx-auto mx-sm-0">
+        <div>
+          <p class="my-2">
+            <button
+              class="btn btn-white btn-nominate--header rounded-pill mr-2 mr-md-3"
+              type="button"
+            >
+              <span class="mr-2 text-primary--custom--2 large"
+                ><i class="fas fa-thumbs-up"></i
+              ></span>
+              Google</button
+            ><button
+              class="btn btn-white btn-nominate--header rounded-pill"
+              type="button"
+            >
+              <span class="mr-2 text-primary--custom--2 large"
+                ><i class="fas fa-thumbs-up"></i
+              ></span>
+              Anonymously
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="jumbotron jumbotron-fluid bg-primary--custom text-white">
+    <h2 class="d-none">Jumbotron</h2>
+    <article class="container h-100">
+      <div class="row align-items-center h-100">
+        <div class="col-12 col-lg-7">
+          <h3 class="jumbo-title">
+            Shoppies
+            <span class="award-text text-primary--custom--2 font-weight-bold"
+              >Award</span
+            >
+            <span
+              class="p-1 p-sm-2 bg-primary--custom--2 just-width just-height d-inline-block"
+            ></span>
+          </h3>
+          <p class="lead my-4">
+            We honour the best. Every movie has a story, but a few become epics.
+            These are the ones we honour
+          </p>
+          <div>
+            <p class="my-2">
+              <button
+                class="btn btn-outline-white btn-lg-xl rounded-pill mr-2 mr-sm-3"
+                type="button"
+              >
+                <span class="mr-2 text-primary--custom--2 large"
+                  ><i class="fas fa-thumbs-up"></i
+                ></span>
+                Google</button
+              ><button
+                class="btn btn-outline-white btn-lg-xl rounded-pill"
+                type="button"
+              >
+                <span class="mr-2 text-primary--custom--2 large"
+                  ><i class="fas fa-thumbs-up"></i
+                ></span>
+                Anonymously
+              </button>
+            </p>
+          </div>
+        </div>
+        <div class="d-none d-lg-block col-lg offset-lg-1">
+          <div class="img-holder pt-xl-5">
+            <img src="assets/img/award1.png" class="img-fluid" alt="award" />
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="nominations">
+    <h2 class="d-none">Nominations</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg">
+          <div class="my-3 rounded">
+            <h4 class="text-gold font-weight-bold">Recent Nominations</h4>
+
+            <div class="d-flex flex-wrap mt-3 row--nomination">
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                  <div class="">
+                    <p><strong>Lucy</strong></p>
+                    <p>
+                      <span class="badge badge-primary--custom text-white"
+                        >Action, Thriller | 2014</span
+                      >
+                    </p>
+                    <p class="my-3">
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+                    <h5 class="text-right">by Anonymous</h5>
+                  </div>
+                  <div>
+                    <p class="my-2">
+                      <button class="btn btn-white rounded-pill" type="button">
+                        <span class="mr-2 text-success"
+                          ><i class="fas fa-thumbs-up"></i
+                        ></span>
+                        Nominate</button
+                      ><button
+                        class="btn btn-outline-danger rounded-pill"
+                        type="button"
+                      >
+                        <span class="mr-2"><i class="fas fa-trash"></i></span>
+                        Cancel
+                      </button>
+                    </p>
+                    <p class="my-2">
+                      <button class="btn btn-white rounded-pill" type="button">
+                        <span class="mr-2 text-primary--custom--2"
+                          ><i class="fas fa-thumbs-up"></i
+                        ></span>
+                        Google</button
+                      ><button class="btn btn-white rounded-pill" type="button">
+                        <span class="mr-2 text-primary--custom--2"
+                          ><i class="fas fa-thumbs-up"></i
+                        ></span>
+                        Anonymously
+                      </button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-success"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Nominate</button
+                        ><button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Google</button
+                        ><button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Anonymously
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-success"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Nominate</button
+                        ><button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Google</button
+                        ><button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Anonymously
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-success"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Nominate</button
+                        ><button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Google</button
+                        ><button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Anonymously
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-success"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Nominate</button
+                        ><button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Google</button
+                        ><button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Anonymously
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-success"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Nominate</button
+                        ><button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Google</button
+                        ><button
+                          class="btn btn-white rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2 text-primary--custom--2"
+                            ><i class="fas fa-thumbs-up"></i
+                          ></span>
+                          Anonymously
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3 col-xl-5">
+          <div class="my-3 rounded">
+            <h4 class="text-gold font-weight-bold">Your Nominations</h4>
+
+            <div class="d-flex flex-wrap mt-3 row--nomination">
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4 nomination nomination--yours">
+                <div class="shadow bg-white">
+                  <div class="img-holder">
+                    <img
+                      src="https://m.media-amazon.com/images/M/MV5BODcxMzY3ODY1NF5BMl5BanBnXkFtZTgwNzg1NDY4MTE@._V1_SX300.jpg"
+                      alt=""
+                      class="img-fluid"
+                    />
+                  </div>
+                  <div class="p-2">
+                    <p class="lead font-weight-bold">Lucy</p>
+                    <p>
+                      <span class="badge badge-gold--custom">Best Picture</span>
+                    </p>
+
+                    <div>
+                      <p class="my-2">
+                        <button
+                          class="btn btn-outline-danger rounded-pill"
+                          type="button"
+                        >
+                          <span class="mr-2"><i class="fas fa-trash"></i></span>
+                          Cancel
+                        </button>
+                      </p>
+                    </div>
+
+                    <h5 class="text-right">by Anonymous</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="container">
+    <div class="d-flex shadow bg-white p-3">
+      <div class="flex-grow-1">amjedidiah &copy; 2021</div>
+      <div class="text-right">
+        <a
+          href="https://github.com/amjedidiah"
+          class="mr-3 large text-primary--custom-2"
+          ><span aria-label="Github" class="text-primary--custom-2"
+            ><i class="fab fa-github"></i> </span
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/am-jedidiah/"
+          class="mr-3 large text-primary--custom-2"
+          ><span aria-label="LinkedIn" class="text-primary--custom-2"
+            ><i class="fab fa-linkedin"></i> </span
+        ></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>

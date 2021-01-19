@@ -59,11 +59,10 @@ types:
                   Best Foreign Language Film,
                   Best Makeup]
                 example: Best Makeup
-            email:
-                description: A user's email address
+            user:
+                description: A user's ID
                 type: string
-                pattern: ^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$
-                example: "john.doe@example.com"
+                example: tt2872732tt2872732tt2872732
             id:
                 description: Concatenation of imdbIDs
                 type: string
@@ -174,25 +173,6 @@ types:
                         description: Response message
                         type: string
                         example: All fields are required
-        401:
-            description: |
-                Invalid email
-            body:
-                application/json:
-                  description: Field error response
-                  type: object
-                  properties:
-                    data:
-                        description: Response data
-                        type: nil
-                    error:
-                        description: Response error
-                        type: boolean
-                        example: true
-                    message:
-                        description: Response message
-                        type: string
-                        example: Email is invalid
         402:
             description: |
                 Invalid category

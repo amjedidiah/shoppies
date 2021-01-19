@@ -13,16 +13,16 @@
 Draw each view to know what information and data will live on each page.
 Alternatively, use a mockup app.
 
+## Code Each View
+
+Code each view in pure HTML, CSS & Javascript
+
 ## Break Each View Into a Hierarchy of Components
 
 Do this by:
 
 - drawing boxes around every component
 - arranging components into a hierarchy
-
-## Code Each View
-
-Code each view in pure HTML, CSS & Javascript
 
 ## Check For Unused Code
 
