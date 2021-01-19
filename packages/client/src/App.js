@@ -1,6 +1,5 @@
 // Module import
 import {Component} from 'react';
-import objectifyArray from 'objectify-array';
 
 // Utils import
 import shoppiesAPI from 'utils/shoppiesAPI';
@@ -12,6 +11,7 @@ import 'assets/css/app.css';
 import Header from 'components/presentation/Header';
 import Jumbo from 'components/presentation/Jumbo';
 import Nominations from 'components/presentation/Nominations';
+import Footer from 'components/presentation/Footer';
 
 /**
  * App component
@@ -21,12 +21,12 @@ import Nominations from 'components/presentation/Nominations';
 class App extends Component {
   state = {
     authedUser: '',
-    nominations: {},
+    nominations: [],
   };
 
   /**
    * Generates authedUser
-   * @param {string} length
+   * @param {string} length - The length of the returned id
    * @return {string}
    */
   makeid = (length) => {
@@ -42,7 +42,6 @@ class App extends Component {
 
   /**
    * Sets authedUser
-   * @return {Promise<object>}
    */
   setAuthedUser = () => {
     const localAuthedUser = localStorage.getItem('authedUser');
@@ -53,44 +52,28 @@ class App extends Component {
       localStorage.setItem('authedUser', newAuthedUser);
     }
 
-    return this.setState(() => ({
-      authedUser: localAuthedUser || newAuthedUser,
-    }));
+    this.setState({authedUser: localAuthedUser || newAuthedUser});
   };
 
   /**
    * Updates Nomination
    * @param {string} action
-   * @param {{authedUser: string, movieID: string} | string} data
+   * @param {{imdbID: string, userID: string}} data
    * @return {Promise<object>}
    */
   onUpdateNomination = (action, data) =>
-    action === 'add' ?
+    action === 'nominate' ?
       shoppiesAPI
           .post('/nominations', {
             ...data,
-            user: data.authedUser,
+            _id: this.makeid(12),
           })
-          .then(({data}) =>
-            this.setState(() => ({nominations: objectifyArray(data)})),
-          )
+          .then(({data}) => this.setState({nominations: data}))
           .catch((err) => console.log(err)) :
       shoppiesAPI
           .del('/nominations', data)
-          .then(({data}) =>
-            this.setState(() => ({nominations: objectifyArray(data)})),
-          )
+          .then(({data}) => this.setState({nominations: data}))
           .catch((err) => console.log(err));
-
-  /**
-   * Objectifies nomination data
-   * @param {object} data
-   * @return {object}
-   */
-  objectifyNominationResponse = (data) =>
-    (data?.data || []).length > 0 ?
-      objectifyArray(data?.data, {by: '_id'}) :
-      {};
 
   /**
    * Executes once component mounts
@@ -98,11 +81,7 @@ class App extends Component {
   componentDidMount = () => {
     shoppiesAPI
         .get('/nominations')
-        .then(({data}) =>
-          this.setState({
-            nominations: this.objectifyNominationResponse(data),
-          }),
-        )
+        .then(({data}) => this.setState({nominations: data}))
         .catch((err) => console.log(err));
     this.setAuthedUser();
   };
@@ -114,55 +93,34 @@ class App extends Component {
   render = () => {
     const {authedUser, nominations} = this.state;
 
+    /**
+     * @type {array}
+     */
+    const authedUserNominations = nominations.filter(
+        ({userID}) => authedUser === userID,
+    );
+
     return (
       <>
         <Header
           authedUser={authedUser}
-          nominations={nominations}
-          onSetAuthedUser={this.setAuthedUser}
+          authedUserNominations={authedUserNominations}
           onUpdateNomination={this.onUpdateNomination}
         />
         <main>
-          <Jumbo authedUser={authedUser} onSetAuthedUser={this.setAuthedUser} />
+          <Jumbo />
           <Nominations
             authedUser={authedUser}
+            authedUserNominations={authedUserNominations}
             nominations={nominations}
-            onSetAuthedUser={this.setAuthedUser}
-            onUpdateNomination={this.updateonUpdateNomination}
+            onUpdateNomination={this.onUpdateNomination}
           />
         </main>
-        <footer>
-          <div className="container">
-            <div className="d-flex shadow bg-white p-3">
-              <div className="flex-grow-1">amjedidiah &copy; 2021</div>
-              <div className="text-right">
-                <a
-                  href="https://github.com/amjedidiah"
-                  className="mr-3 large text-primary--custom-2"
-                >
-                  <span aria-label="Github" className="text-primary--custom-2">
-                    <i className="fab fa-github"></i>{' '}
-                  </span>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/am-jedidiah/"
-                  className="mr-3 large text-primary--custom-2"
-                >
-                  <span
-                    aria-label="LinkedIn"
-                    className="text-primary--custom-2"
-                  >
-                    <i className="fab fa-linkedin"></i>{' '}
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </>
     );
   };
 }
 
-// Export App
+// App export
 export default App;

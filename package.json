@@ -4,6 +4,7 @@
   "scripts": {
     "api": "npx lerna run --parallel --scope shoppies-api dev",
     "api:doc": "npx lerna run --parallel --scope shoppies-api api:launch",
+    "client": "npx lerna run --parallel --scope shoppies-client dev",
     "list": "npx lerna ls -a --graph --json",
     "lint": "npx lerna run lint",
     "test": "npx lerna run test",

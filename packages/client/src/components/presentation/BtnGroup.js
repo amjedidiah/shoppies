@@ -1,5 +1,6 @@
 // Module imports
 import PropTypes from 'prop-types';
+import {FaThumbsUp, FaTrash} from 'react-icons/fa';
 
 /**
  * BtnGroup component
@@ -8,102 +9,58 @@ import PropTypes from 'prop-types';
  *
  * @example
  * const authedUser=''
- * const movieID=''
- * const nominationID=''
- * const nominations={}
- * const onSetAuthedUser=()=>{}
+ * const ifNominatedByAuthedUser = false
+ * const imdbID=''
  * const onUpdateNomination=()=>{}
- * const xtraClassName={}
  *
  * return <BtnGroup
  *          authedUser={authedUser}
- *          movieID={movieID}
- *          nominationID={nominationID}
- *          nominations={nominations}
- *          onSetAuthedUser={onSetAuthedUser}
+ *          ifNominatedByAuthedUser={ifNominatedByAuthedUser}
+ *          imdbID={imdbID}
  *          onUpdateNomination={onUpdateNomination}
- *          xtraClassName={xtraClassName}
  *        />
  */
 const BtnGroup = ({
   authedUser,
-  movieID,
-  nominationID,
-  nominations,
-  onSetAuthedUser,
+  ifNominatedByAuthedUser,
+  imdbID,
   onUpdateNomination,
-  xtraClassName,
 }) => (
   <div>
-    {authedUser ? (
-      <>
-        <p className="my-2">
-          {!(nominations[authedUser] || []).includes(movieID) ? (
-            <button
-              className={`btn btn-outline-success rounded-pill
-              ${xtraClassName?.nominate}`}
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onUpdateNomination('add', {authedUser, movieID});
-              }}
-            >
-              <span className="mr-2">
-                <i className="fas fa-thumbs-up"></i>
-              </span>
-              Nominate
-            </button>
-          ) : (
-            <button
-              className={`btn btn-outline-danger rounded-pill
-              ${xtraClassName?.cancel}`}
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onUpdateNomination('remove', nominationID)
-                ;
-              }}
-            >
-              <span className="mr-2">
-                <i className="fas fa-trash"></i>
-              </span>
-              Cancel
-            </button>
-          )}
-        </p>
-      </>
-    ) : (
-      <>
-        <p className="my-2">
+    <p className="my-2">
+      {['cancel', 'nominate'].map((action) => {
+        /**
+         * @type {string} - Button color
+         */
+        const btnColor = action === 'cancel' ? 'danger' : 'success';
+
+        /**
+         * @type {boolean}
+         */
+        const shouldDisplay =
+          (ifNominatedByAuthedUser && action === 'cancel') ||
+          (!ifNominatedByAuthedUser && action === 'nominate');
+
+        return (
           <button
-            className={`btn rounded-pill ${xtraClassName?.google?.btn}`}
+            key={action}
+            className={`btn btn-outline-${btnColor} ${
+              !shouldDisplay && 'd-none'
+            } rounded-pill text-uppercase`}
             type="button"
-            onClick={() => onSetAuthedUser('google')}
+            onClick={(e) => {
+              e.stopPropagation();
+              onUpdateNomination(action, {userID: authedUser, imdbID});
+            }}
           >
-            <span
-              className={`mr-2 text-primary--custom--2
-              ${xtraClassName?.google?.text}`}
-            >
-              <i className="fas fa-thumbs-up"></i>
+            <span className="mr-2">
+              {action === 'cancel' ? <FaTrash /> : <FaThumbsUp />}
             </span>
-            Google
+            {action}
           </button>
-          <button
-            className={`btn rounded-pill ${xtraClassName?.anon?.btn}`}
-            type="button"
-            onClick={() => onSetAuthedUser('anon')}
-          >
-            <span
-              className={`mr-2 text-primary--custom--2
-              ${xtraClassName?.anon?.text}`}
-            >
-              <i className="fas fa-thumbs-up"></i>
-            </span>
-            Anonymously
-          </button>
-        </p>
-      </>
-    )}
+        );
+      })}
+    </p>
   </div>
 );
 
@@ -113,39 +70,24 @@ BtnGroup.propTypes = {
    */
   authedUser: PropTypes.string,
   /**
-   * BtnGroup movieID
+   * BtnGroup ifNominatedByAuthedUser
    */
-  movieID: PropTypes.string,
+  ifNominatedByAuthedUser: PropTypes.bool,
   /**
-   * BtnGroup nominationID
+   * BtnGroup imdbID
    */
-  nominationID: PropTypes.string,
-  /**
-   * BtnGroup nominations
-   */
-  nominations: PropTypes.object,
-  /**
-   * BtnGroup onSetAuthedUser
-   */
-  onSetAuthedUser: PropTypes.func,
+  imdbID: PropTypes.string,
   /**
    * BtnGroup onUpdateNomination
    */
   onUpdateNomination: PropTypes.func,
-  /**
-   * BtnGroup xtraClassName
-   */
-  xtraClassName: PropTypes.object,
 };
 
 BtnGroup.defaultProps = {
   authedUser: '',
-  movieID: '',
-  nominationID: '',
-  nominations: {},
-  onSetAuthedUser: () => {},
+  ifNominatedByAuthedUser: false,
+  imdbID: '',
   onUpdateNomination: () => {},
-  xtraClassName: {},
 };
 
 // BtnGroup export

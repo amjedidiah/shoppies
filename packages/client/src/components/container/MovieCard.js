@@ -15,23 +15,19 @@ import omdbAPI from 'utils/omdbAPI';
  *
  * @example
  * const authedUser=''
- * const category=''
+ * const authedUserNominations=[]
  * const imdbID=''
  * const movie={}
  * const nomination={}
- * const nominations={}
- * const onSetAuthedUser=()=>{}
  * const onUpdateNomination=()=>{}
  * const xtraClassName={}
  *
  * return <MovieCard
  *          authedUser={authedUser}
- *          category={category}
+ *          authedUserNominations={authedUserNominations}
  *          imdbID={imdbID}
  *          movie={movie}
  *          nomination={nomination}
- *          nominations={nominations}
- *          onSetAuthedUser={onSetAuthedUser}
  *          onUpdateNomination={onUpdateNomination}
  *          xtraClassName={xtraClassName}
  *        />
@@ -47,9 +43,9 @@ class MovieCard extends Component {
      */
     authedUser: PropTypes.string,
     /**
-     * MovieCard category
+     * MovieCard authedUserNominations
      */
-    category: PropTypes.string,
+    authedUserNominations: PropTypes.array,
     /**
      * MovieCard imdbID
      */
@@ -63,14 +59,6 @@ class MovieCard extends Component {
      */
     nomination: PropTypes.object,
     /**
-     * MovieCard nominations
-     */
-    nominations: PropTypes.object,
-    /**
-     * MovieCard onSetAuthedUser
-     */
-    onSetAuthedUser: PropTypes.func,
-    /**
      * MovieCard onUpdateNomination
      */
     onUpdateNomination: PropTypes.func,
@@ -82,12 +70,10 @@ class MovieCard extends Component {
 
   static defaultProps = {
     authedUser: '',
-    category: '',
+    authedUserNominations: [],
     imdbID: '',
     movie: {},
     nomination: {},
-    nominations: {},
-    onSetAuthedUser: () => {},
     onUpdateNomination: () => {},
     xtraClassName: {},
   };
@@ -121,13 +107,18 @@ class MovieCard extends Component {
     const {Genre, imdbID, Poster, Title, Year} = this.state.movie;
     const {
       authedUser,
-      category,
+      authedUserNominations,
       nomination,
-      nominations,
-      onSetAuthedUser,
       onUpdateNomination,
       xtraClassName,
     } = this.props;
+
+    /**
+     * @type {boolean}
+     */
+    const ifNominatedByAuthedUser = authedUserNominations.includes(
+        imdbID,
+    );
 
     return (
       <div className={`bg-white ${xtraClassName?.card}`}>
@@ -151,36 +142,24 @@ class MovieCard extends Component {
               {Year}
             </span>
           </p>
-          {category && (
+          {imdbID && (
             <p>
-              <span className="badge badge-gold--custom">{category}</span>
+              <span className="badge badge-primary--custom text-white">
+                {Genre}
+              </span>
             </p>
           )}
 
-          {nomination?.user && authedUser !== nomination?.user && (
-            <>
-              <p>
-                <span className="badge badge-primary--custom text-white">
-                  {Genre}
-                </span>
-              </p>
-              <h5 className="text-right">by {nomination?.user}</h5>
-            </>
+          {imdbID && !ifNominatedByAuthedUser && (
+            <h5 className="text-right">by {nomination?.userID}</h5>
           )}
           <BtnGroup
             authedUser={authedUser}
-            movieID={imdbID}
-            nominationID={nomination?.id}
-            nominations={nominations}
-            onSetAuthedUser={onSetAuthedUser}
+            imdbID={imdbID}
+            ifNominatedByAuthedUser={ifNominatedByAuthedUser}
             onUpdateNomination={onUpdateNomination}
-            xtraClassName={{
-              anon: {btn: 'btn-white'},
-              google: {btn: 'btn-white'},
-            }}
           />
         </div>
-
       </div>
     );
   };

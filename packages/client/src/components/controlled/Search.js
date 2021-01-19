@@ -13,14 +13,12 @@ import omdbAPI from 'utils/omdbAPI';
  *
  * @example
  * const authedUser=''
- * const nominations={}
- * const onSetAuthedUser=()=>{}
+ * const authedUserNominations=[]
  * const onUpdateNomination=()=>{}
  *
  * return <Search
  *          authedUser={authedUser}
- *          nominations={nominations}
- *          onSetAuthedUser={onSetAuthedUser}
+ *          authedUserNominations={authedUserNominations}
  *          onUpdateNomination={onUpdateNomination}
  *        />
  */
@@ -39,13 +37,9 @@ class Search extends Component {
      */
     authedUser: PropTypes.string,
     /**
-     * Search imdbID
+     * Search authedUserNominations
      */
-    nominations: PropTypes.object,
-    /**
-     * Search onSetAuthedUser
-     */
-    onSetAuthedUser: PropTypes.func,
+    authedUserNominations: PropTypes.array,
     /**
      * Search onUpdateNomination
      */
@@ -54,8 +48,7 @@ class Search extends Component {
 
   static defaultProps = {
     authedUser: '',
-    nominations: {},
-    onSetAuthedUser: () => {},
+    authedUserNominations: [],
     onUpdateNomination: () => {},
   };
 
@@ -68,9 +61,8 @@ class Search extends Component {
   search = (s = this.state.s, page = this.state.page) =>
     this.setState(
         {
-          status: 'Searching for your movie',
           results: [],
-          page,
+          status: 'Searching for your movie',
           totalResults: 0,
         },
         () =>
@@ -91,7 +83,11 @@ class Search extends Component {
               })
               .catch((err) =>
                 this.setState(
-                    () => ({status: 'Movie not found!'}),
+                    () => ({
+                      results: [],
+                      status: 'Movie not found!',
+                      totalResults: 0,
+                    }),
                     () => console.log(err),
                 ),
               ),
@@ -113,14 +109,16 @@ class Search extends Component {
    * @return {object} - The UI DOM object
    */
   render = () => {
+    const {page, results, status, totalResults} = this.state;
     const {
       authedUser,
-      nominations,
-      onSetAuthedUser,
+      authedUserNominations,
       onUpdateNomination,
     } = this.props;
-    const {page, results, status, totalResults} = this.state;
 
+    /**
+     * @type {string} - class for searchImages
+     */
     const imgClass =
       'img-fluid--search ${3|rounded-top,rounded-right,rounded-bottom' +
       ',rounded-left,rounded-circle,|}';
@@ -165,7 +163,6 @@ class Search extends Component {
           >
             {results.length > 0 ? (
               <>
-                {' '}
                 <li className="dropdown-header px-0 text-uppercase">
                   Related movies
                 </li>
@@ -173,9 +170,8 @@ class Search extends Component {
                   <li key={movie?.imdbID} className="dropdown-item p-0 mb-3">
                     <MovieCard
                       authedUser={authedUser}
+                      authedUserNominations={authedUserNominations}
                       movie={movie}
-                      nominations={nominations}
-                      onSetAuthedUser={onSetAuthedUser}
                       onUpdateNomination={onUpdateNomination}
                       xtraClassName={{
                         card: 'd-flex align-items-start',

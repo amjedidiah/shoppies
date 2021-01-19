@@ -1,14 +1,6 @@
-// Module imports
-import PropTypes from 'prop-types';
-
-// Component imports
-import BtnGroup from './BtnGroup';
-
-
 // Asset imports
 import award1 from 'assets/img/award1.png';
 import 'assets/css/jumbo.css';
-
 
 /**
  * Jumbo component
@@ -16,15 +8,9 @@ import 'assets/css/jumbo.css';
  * @return {object} - The UI DOM object
  *
  * @example
- * const authedUser=''
- * const onSetAuthedUser=()=>{}
- *
- * return <Jumbo
- *          authedUser={authedUser}
- *          onSetAuthedUser={onSetAuthedUser}
- *        />
+ * return <Jumbo />
  */
-const Jumbo = ({authedUser, onSetAuthedUser}) => (
+const Jumbo = () => (
   <section className="jumbotron jumbotron-fluid bg-primary--custom text-white">
     <h2 className="d-none">Jumbotron</h2>
     <article className="container h-100">
@@ -47,19 +33,6 @@ const Jumbo = ({authedUser, onSetAuthedUser}) => (
             We honour the best. Every movie has a story, but a few become epics.
             These are the ones we honour
           </p>
-          <BtnGroup
-            authedUser={authedUser}
-            onSetAuthedUser={onSetAuthedUser}
-            xtraClassName={{
-              anon: {btn: 'btn-outline-white btn-lg-xl', text: 'large'},
-              cancel: 'd-none',
-              nominate: 'd-none',
-              google: {
-                btn: ' btn-outline-white btn-lg-xl mr-2 mr-sm-3',
-                text: 'large',
-              },
-            }}
-          />
         </div>
         <div className="d-none d-lg-block col-lg offset-lg-1">
           <div className="img-holder pt-xl-5">
@@ -70,23 +43,6 @@ const Jumbo = ({authedUser, onSetAuthedUser}) => (
     </article>
   </section>
 );
-
-
-Jumbo.propTypes = {
-  /**
-   * Jumbo authedUser
-   */
-  authedUser: PropTypes.string,
-  /**
-   * Jumbo onSetAuthedUser
-   */
-  onSetAuthedUser: PropTypes.func,
-};
-
-Jumbo.defaultProps = {
-  authedUser: '',
-  onSetAuthedUser: () => {},
-};
 
 // Jumbo export
 export default Jumbo;

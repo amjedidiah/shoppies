@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 
 // Component imports
 import Search from 'components/controlled/Search';
-import BtnGroup from './BtnGroup';
 
 // Asset imports
 import logo from 'assets/img/logo.png';
 import 'assets/css/header.css';
-
 
 /**
  * Header component
@@ -17,24 +15,17 @@ import 'assets/css/header.css';
  *
  * @example
  * const authedUser=''
- * const nominations={}
- * const onSetAuthedUser=()=>{}
+ * const authedUserNominations=[]
  * const onUpdateNomination=()=>{}
  *
  * return <Header
  *          authedUser={authedUser}
- *          nominations={nominations}
- *          onSetAuthedUser={onSetAuthedUser}
+ *          authedUserNominations={authedUserNominations}
  *          onUpdateNomination={onUpdateNomination}
  *        />
  *
  */
-const Header = ({
-  authedUser,
-  nominations,
-  onSetAuthedUser,
-  onUpdateNomination,
-}) => (
+const Header = ({authedUser, authedUserNominations, onUpdateNomination}) => (
   <header>
     <nav
       className="navbar navbar-expand navbar-light bg-transparent fixed-top"
@@ -52,8 +43,7 @@ const Header = ({
         </a>
         <Search
           authedUser={authedUser}
-          nominations={nominations}
-          onSetAuthedUser={onSetAuthedUser}
+          authedUserNominations={authedUserNominations}
           onUpdateNomination={onUpdateNomination}
         />
         <ul className="navbar-nav mr-auto ml-auto">
@@ -63,21 +53,6 @@ const Header = ({
             </a>
           </li>
         </ul>
-        <form className="form-inline mb-3 mb-sm-0 mx-auto mx-sm-0">
-          <BtnGroup
-            authedUser={authedUser}
-            onSetAuthedUser={onSetAuthedUser}
-            xtraClassName={{
-              anon: {btn: 'btn-white btn-nominate--header', text: 'large'},
-              cancel: 'd-none',
-              nominate: 'd-none',
-              google: {
-                btn: 'btn-white btn-nominate--header  mr-2 mr-md-3',
-                text: 'large',
-              },
-            }}
-          />
-        </form>
       </div>
     </nav>
   </header>
@@ -89,13 +64,9 @@ Header.propTypes = {
    */
   authedUser: PropTypes.string,
   /**
-   * Header movieID
+   * Header authedUserNominations
    */
-  nominations: PropTypes.object,
-  /**
-   * Header onSetAuthedUser
-   */
-  onSetAuthedUser: PropTypes.func,
+  authedUserNominations: PropTypes.array,
   /**
    * Header onUpdateNomination
    */
@@ -104,8 +75,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   authedUser: '',
-  nominations: {},
-  onSetAuthedUser: () => {},
+  authedUserNominations: [],
   onUpdateNomination: () => {},
 };
 
