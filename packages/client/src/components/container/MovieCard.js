@@ -150,7 +150,7 @@ class MovieCard extends Component {
             </p>
           )}
 
-          {imdbID && !ifNominatedByAuthedUser && (
+          {this.props.imdbID && !ifNominatedByAuthedUser && (
             <h5 className="text-right">by {nomination?.userID}</h5>
           )}
           <BtnGroup

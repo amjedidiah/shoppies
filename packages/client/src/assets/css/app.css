@@ -42,7 +42,7 @@ body {
 }
 
 .input--search.show {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   height: 40px;
@@ -51,6 +51,7 @@ body {
 .input--search.show .dropdown-menu {
   width: 100%;
   height: calc(100vh - 40px);
+  overflow-y: auto;
 }
 
 .text-primary--custom {

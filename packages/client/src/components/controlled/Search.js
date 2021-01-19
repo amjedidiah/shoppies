@@ -62,7 +62,7 @@ class Search extends Component {
     this.setState(
         {
           results: [],
-          status: 'Searching for your movie',
+          status: 'Loading movie results',
           totalResults: 0,
         },
         () =>
