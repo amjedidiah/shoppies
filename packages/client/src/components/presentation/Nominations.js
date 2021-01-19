@@ -35,17 +35,21 @@ const Nominations = ({
    * @param {array} noms
    * @return {object}
    */
-  const renderNoms = (noms) =>
+  const renderNoms = (noms = []) =>
     noms.map((nomination) => (
       <div key={nomination?._id} className="mb-4 nomination">
         <MovieCard
           authedUser={authedUser}
-          authedUserNominations={authedUserNominations}
+          ifInMyNominations={authedUserNominations
+              .map((n) => n.imdbID)
+              .includes(nomination?.imdbID)}
+          ifNominatedByAuthedUser={nomination?.userID === authedUser}
           imdbID={nomination?.imdbID}
           nomination={nomination}
           onUpdateNomination={onUpdateNomination}
           xtraClassName={{
             card: 'shadow',
+            img: 'w-100',
             info: 'p-2',
           }}
         />

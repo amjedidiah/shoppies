@@ -3,12 +3,14 @@ const express = require('express');
 const router = new express.Router();
 
 // Custom module imports
-const post = require('./post');
+const del = require('./del');
 const get = require('./get');
+const post = require('./post');
 
 // Routes
-router.post('/', post);
+router.delete('/', del);
 router.get('/', get);
+router.post('/', post);
 
 // Export Route
 module.exports = router;

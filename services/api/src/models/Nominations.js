@@ -8,17 +8,12 @@ const {Schema} = mongoose;
 // Mongoose User Schema
 const NominationsSchema = new Schema(
     {
+      imdbID: String,
       isDeleted: {
         default: false,
         type: Boolean,
       },
-      movieID: String,
-      user: {
-        type: String,
-        required: true,
-        unique: false,
-        trim: true,
-      },
+      userID: String,
     },
     {
       timestamps: true,
@@ -32,7 +27,6 @@ NominationsSchema.methods.generateJWT = () => {
 
   return jwt.sign(
       {
-        user: this.user,
         id: this.id,
         exp: parseInt(expirationDate.getTime() / 1000, 10),
       },
@@ -43,9 +37,8 @@ NominationsSchema.methods.generateJWT = () => {
 NominationsSchema.methods.toAuthJSON = () => {
   return {
     id: this.id,
-    category: this.category,
-    movieID: this.movieID,
-    user: this.user,
+    imdbID: this.imdbID,
+    userID: this.userID,
   };
 };
 

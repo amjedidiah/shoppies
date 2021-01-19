@@ -32,8 +32,8 @@ const animHeader = () => {
     btnNomPos = 'jumbo';
   }
 
-  animButtons(btnNomPos);
-  animForm(btnNomPos);
+  // animButtons(btnNomPos);
+  // animForm(btnNomPos);
 };
 
 window.addEventListener('load', animHeader);

@@ -15,7 +15,8 @@ import omdbAPI from 'utils/omdbAPI';
  *
  * @example
  * const authedUser=''
- * const authedUserNominations=[]
+ * const ifNominatedByAuthedUser=''
+ * const ifInMyNominations=false
  * const imdbID=''
  * const movie={}
  * const nomination={}
@@ -24,7 +25,8 @@ import omdbAPI from 'utils/omdbAPI';
  *
  * return <MovieCard
  *          authedUser={authedUser}
- *          authedUserNominations={authedUserNominations}
+ *          ifInMyNominations={ifInMyNominations}
+ *          ifNominatedByAuthedUser={ifNominatedByAuthedUser}
  *          imdbID={imdbID}
  *          movie={movie}
  *          nomination={nomination}
@@ -43,9 +45,14 @@ class MovieCard extends Component {
      */
     authedUser: PropTypes.string,
     /**
-     * MovieCard authedUserNominations
+     * MovieCard ifInMyNominations
      */
-    authedUserNominations: PropTypes.array,
+
+    ifInMyNominations: PropTypes.bool,
+    /**
+     * MovieCard ifNominatedByAuthedUser
+     */
+    ifNominatedByAuthedUser: PropTypes.bool,
     /**
      * MovieCard imdbID
      */
@@ -70,7 +77,8 @@ class MovieCard extends Component {
 
   static defaultProps = {
     authedUser: '',
-    authedUserNominations: [],
+    ifInMyNominations: false,
+    ifNominatedByAuthedUser: false,
     imdbID: '',
     movie: {},
     nomination: {},
@@ -86,7 +94,7 @@ class MovieCard extends Component {
   fetchMovie = (i) =>
     omdbAPI
         .get('/?apikey=ce4b5ffd', {params: {i}})
-        .then((movie) => this.setState(() => ({movie})))
+        .then(({data}) => this.setState(() => ({movie: data})))
         .catch((err) => console.log(err));
 
   /**
@@ -107,18 +115,12 @@ class MovieCard extends Component {
     const {Genre, imdbID, Poster, Title, Year} = this.state.movie;
     const {
       authedUser,
-      authedUserNominations,
+      ifInMyNominations,
+      ifNominatedByAuthedUser,
       nomination,
       onUpdateNomination,
       xtraClassName,
     } = this.props;
-
-    /**
-     * @type {boolean}
-     */
-    const ifNominatedByAuthedUser = authedUserNominations.includes(
-        imdbID,
-    );
 
     return (
       <div className={`bg-white ${xtraClassName?.card}`}>
@@ -139,24 +141,21 @@ class MovieCard extends Component {
           </p>
           <p>
             <span className="badge badge-primary--custom text-white">
-              {Year}
+              {Year} {this.props.imdbID && ` | ${Genre}`}
             </span>
           </p>
-          {imdbID && (
-            <p>
-              <span className="badge badge-primary--custom text-white">
-                {Genre}
-              </span>
+
+          {this.props.imdbID && (
+            <p className="text-right">
+              by {!ifNominatedByAuthedUser ? nomination?.userID : 'me'}
             </p>
           )}
 
-          {this.props.imdbID && !ifNominatedByAuthedUser && (
-            <h5 className="text-right">by {nomination?.userID}</h5>
-          )}
           <BtnGroup
             authedUser={authedUser}
             imdbID={imdbID}
             ifNominatedByAuthedUser={ifNominatedByAuthedUser}
+            ifInMyNominations={ifInMyNominations}
             onUpdateNomination={onUpdateNomination}
           />
         </div>

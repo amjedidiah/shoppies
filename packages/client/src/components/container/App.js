@@ -21,6 +21,7 @@ import Footer from 'components/presentation/Footer';
 class App extends Component {
   state = {
     authedUser: '',
+    authedUserNominations: [],
     nominations: [],
   };
 
@@ -56,23 +57,41 @@ class App extends Component {
   };
 
   /**
+   * Set state nominations
+   * @param {[]} noms
+   * @return {Promise<object>}
+   */
+  setNominations = (noms) => {
+    const nominations = noms.sort((a, b) =>
+      a.createdAt < b.createdAt ? 1 : b.createdAt < a.createdAt ? -1 : 0,
+    );
+
+    return this.setState(({authedUser}) => ({
+      authedUserNominations: nominations.filter(
+          ({userID}) => authedUser === userID,
+      ),
+      nominations,
+    }));
+  };
+
+  /**
    * Updates Nomination
    * @param {string} action
    * @param {{imdbID: string, userID: string}} data
    * @return {Promise<object>}
    */
   onUpdateNomination = (action, data) =>
-    action === 'nominate' ?
-      shoppiesAPI
-          .post('/nominations', {
-            ...data,
-            _id: this.makeid(12),
-          })
-          .then(({data}) => this.setState({nominations: data}))
-          .catch((err) => console.log(err)) :
-      shoppiesAPI
-          .del('/nominations', data)
-          .then(({data}) => this.setState({nominations: data}))
+    action === 'nominate' && this.state.authedUserNominations.length === 5 ?
+      alert('The maximum amount of nominations is 5') :
+      shoppiesAPI[action === 'nominate' ? 'post' : 'delete'](
+          `/nominations${
+            action === 'cancel' ?
+              `?imdbID=${data.imdbID}&&userID=${data.userID}` :
+              ''
+          }`,
+          data,
+      )
+          .then(({data}) => this.setNominations(data.data))
           .catch((err) => console.log(err));
 
   /**
@@ -81,7 +100,7 @@ class App extends Component {
   componentDidMount = () => {
     shoppiesAPI
         .get('/nominations')
-        .then(({data}) => this.setState({nominations: data}))
+        .then(({data}) => this.setNominations(data.data))
         .catch((err) => console.log(err));
     this.setAuthedUser();
   };
@@ -91,14 +110,9 @@ class App extends Component {
    * @return {object} - The UI DOM object
    */
   render = () => {
-    const {authedUser, nominations} = this.state;
+    const {authedUser, authedUserNominations, nominations} = this.state;
 
-    /**
-     * @type {array}
-     */
-    const authedUserNominations = nominations.filter(
-        ({userID}) => authedUser === userID,
-    );
+    console.log(nominations);
 
     return (
       <>

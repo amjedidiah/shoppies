@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const errorHandler = require('errorhandler');
 const express = require('express');
+const formData = require('express-form-data');
 const mongoose = require('mongoose');
 
 // Environment variables
@@ -26,6 +27,7 @@ app.use(cors());
 app.use(require('morgan')('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(formData.parse());
 
 if (!isProduction) app.use(errorHandler());
 

@@ -171,6 +171,9 @@ class Search extends Component {
                     <MovieCard
                       authedUser={authedUser}
                       authedUserNominations={authedUserNominations}
+                      ifNominatedByAuthedUser={authedUserNominations.find(
+                          (m) => m.imdbID === movie.imdbID,
+                      )}
                       movie={movie}
                       onUpdateNomination={onUpdateNomination}
                       xtraClassName={{

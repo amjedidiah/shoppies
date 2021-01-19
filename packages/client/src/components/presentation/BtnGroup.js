@@ -9,12 +9,14 @@ import {FaThumbsUp, FaTrash} from 'react-icons/fa';
  *
  * @example
  * const authedUser=''
+ * const ifInMyNominations=false
  * const ifNominatedByAuthedUser = false
  * const imdbID=''
  * const onUpdateNomination=()=>{}
  *
  * return <BtnGroup
  *          authedUser={authedUser}
+ *          ifInMyNominations={ifInMyNominations}
  *          ifNominatedByAuthedUser={ifNominatedByAuthedUser}
  *          imdbID={imdbID}
  *          onUpdateNomination={onUpdateNomination}
@@ -23,6 +25,7 @@ import {FaThumbsUp, FaTrash} from 'react-icons/fa';
 const BtnGroup = ({
   authedUser,
   ifNominatedByAuthedUser,
+  ifInMyNominations,
   imdbID,
   onUpdateNomination,
 }) => (
@@ -39,13 +42,17 @@ const BtnGroup = ({
          */
         const shouldDisplay =
           (ifNominatedByAuthedUser && action === 'cancel') ||
-          (!ifNominatedByAuthedUser && action === 'nominate');
+          (!ifNominatedByAuthedUser &&
+            !ifInMyNominations &&
+            action === 'nominate');
 
         return (
           <button
             key={action}
             className={`btn btn-outline-${btnColor} ${
-              !shouldDisplay && 'd-none'
+              (!shouldDisplay ||
+                (ifNominatedByAuthedUser && action === 'nominate')) &&
+              'd-none'
             } rounded-pill text-uppercase`}
             type="button"
             onClick={(e) => {
@@ -70,6 +77,10 @@ BtnGroup.propTypes = {
    */
   authedUser: PropTypes.string,
   /**
+   * BtnGroup ifInMyNominations
+   */
+  ifInMyNominations: PropTypes.bool,
+  /**
    * BtnGroup ifNominatedByAuthedUser
    */
   ifNominatedByAuthedUser: PropTypes.bool,
@@ -85,6 +96,7 @@ BtnGroup.propTypes = {
 
 BtnGroup.defaultProps = {
   authedUser: '',
+  ifInMyNominations: false,
   ifNominatedByAuthedUser: false,
   imdbID: '',
   onUpdateNomination: () => {},
