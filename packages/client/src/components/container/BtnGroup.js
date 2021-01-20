@@ -42,8 +42,7 @@ const BtnGroup = (props) => (
          * @type {boolean}
          */
         const shouldDisplay =
-          (props.ifNominatedByAuthedUser &&
-            action === 'cancel') ||
+          (props.ifNominatedByAuthedUser && action === 'cancel') ||
           (!props.ifNominatedByAuthedUser &&
             !props.ifInMyNominations &&
             action === 'nominate');
@@ -55,13 +54,12 @@ const BtnGroup = (props) => (
               !shouldDisplay && 'd-none'
             } rounded-pill text-uppercase`}
             type="button"
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={(e) =>
               props.handleUpdateNominations(action, {
                 userID: props.authedUser,
                 imdbID: props.imdbID,
-              });
-            }}
+              })
+            }
           >
             <span className="mr-2">
               {action === 'cancel' ? <FaTrash /> : <FaThumbsUp />}
@@ -107,11 +105,7 @@ BtnGroup.defaultProps = {
 
 const mapStateToProps = ({authedUser, nominations}, {imdbID}) => ({
   authedUser,
-  ifInMyNominations: getIfInMyNominations(
-      authedUser,
-      imdbID,
-      nominations,
-  ),
+  ifInMyNominations: getIfInMyNominations(authedUser, imdbID, nominations),
 });
 
 // BtnGroup export
