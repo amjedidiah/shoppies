@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/amjedidiah/shoppies/static/css/main.1dbb930b.chunk.css",
-    "main.js": "/amjedidiah/shoppies/static/js/main.df97151d.chunk.js",
-    "main.js.map": "/amjedidiah/shoppies/static/js/main.df97151d.chunk.js.map",
-    "runtime-main.js": "/amjedidiah/shoppies/static/js/runtime-main.1152c14b.js",
-    "runtime-main.js.map": "/amjedidiah/shoppies/static/js/runtime-main.1152c14b.js.map",
-    "static/js/2.70cb8ba4.chunk.js": "/amjedidiah/shoppies/static/js/2.70cb8ba4.chunk.js",
-    "static/js/2.70cb8ba4.chunk.js.map": "/amjedidiah/shoppies/static/js/2.70cb8ba4.chunk.js.map",
-    "static/js/3.4618c5f5.chunk.js": "/amjedidiah/shoppies/static/js/3.4618c5f5.chunk.js",
-    "static/js/3.4618c5f5.chunk.js.map": "/amjedidiah/shoppies/static/js/3.4618c5f5.chunk.js.map",
-    "index.html": "/amjedidiah/shoppies/index.html",
-    "service-worker.js": "/amjedidiah/shoppies/service-worker.js",
-    "service-worker.js.map": "/amjedidiah/shoppies/service-worker.js.map",
-    "static/css/main.1dbb930b.chunk.css.map": "/amjedidiah/shoppies/static/css/main.1dbb930b.chunk.css.map",
-    "static/js/2.70cb8ba4.chunk.js.LICENSE.txt": "/amjedidiah/shoppies/static/js/2.70cb8ba4.chunk.js.LICENSE.txt",
-    "static/media/award1.7a972d81.png": "/amjedidiah/shoppies/static/media/award1.7a972d81.png",
-    "static/media/logo.fd535fbe.png": "/amjedidiah/shoppies/static/media/logo.fd535fbe.png"
+    "main.css": "/shoppies/static/css/main.1dbb930b.chunk.css",
+    "main.js": "/shoppies/static/js/main.25ab27fe.chunk.js",
+    "main.js.map": "/shoppies/static/js/main.25ab27fe.chunk.js.map",
+    "runtime-main.js": "/shoppies/static/js/runtime-main.457ae5e6.js",
+    "runtime-main.js.map": "/shoppies/static/js/runtime-main.457ae5e6.js.map",
+    "static/js/2.70cb8ba4.chunk.js": "/shoppies/static/js/2.70cb8ba4.chunk.js",
+    "static/js/2.70cb8ba4.chunk.js.map": "/shoppies/static/js/2.70cb8ba4.chunk.js.map",
+    "static/js/3.4618c5f5.chunk.js": "/shoppies/static/js/3.4618c5f5.chunk.js",
+    "static/js/3.4618c5f5.chunk.js.map": "/shoppies/static/js/3.4618c5f5.chunk.js.map",
+    "index.html": "/shoppies/index.html",
+    "service-worker.js": "/shoppies/service-worker.js",
+    "service-worker.js.map": "/shoppies/service-worker.js.map",
+    "static/css/main.1dbb930b.chunk.css.map": "/shoppies/static/css/main.1dbb930b.chunk.css.map",
+    "static/js/2.70cb8ba4.chunk.js.LICENSE.txt": "/shoppies/static/js/2.70cb8ba4.chunk.js.LICENSE.txt",
+    "static/media/award1.7a972d81.png": "/shoppies/static/media/award1.7a972d81.png",
+    "static/media/logo.fd535fbe.png": "/shoppies/static/media/logo.fd535fbe.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.1152c14b.js",
+    "static/js/runtime-main.457ae5e6.js",
     "static/js/2.70cb8ba4.chunk.js",
     "static/css/main.1dbb930b.chunk.css",
-    "static/js/main.df97151d.chunk.js"
+    "static/js/main.25ab27fe.chunk.js"
   ]
 }
