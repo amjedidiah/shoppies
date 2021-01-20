@@ -139,7 +139,6 @@ class MovieCard extends Component {
             ifNominatedByAuthedUser={
               this.props.imdbID ? ifNominatedByAuthedUser : ifInMyNominations
             }
-            ifInMyNominations={ifInMyNominations}
             imdbID={imdbID}
           />
         </div>

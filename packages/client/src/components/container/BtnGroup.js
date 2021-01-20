@@ -5,6 +5,7 @@ import {FaThumbsUp, FaTrash} from 'react-icons/fa';
 
 // Action creator imports
 import {handleUpdateNominations} from 'redux/actions/nominations';
+import {getIfInMyNominations} from 'redux/selectors';
 
 /**
  * BtnGroup component
@@ -41,7 +42,8 @@ const BtnGroup = (props) => (
          * @type {boolean}
          */
         const shouldDisplay =
-          (props.ifNominatedByAuthedUser && action === 'cancel') ||
+          (props.ifNominatedByAuthedUser &&
+            action === 'cancel') ||
           (!props.ifNominatedByAuthedUser &&
             !props.ifInMyNominations &&
             action === 'nominate');
@@ -103,8 +105,13 @@ BtnGroup.defaultProps = {
   imdbID: '',
 };
 
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({authedUser, nominations}, {imdbID}) => ({
   authedUser,
+  ifInMyNominations: getIfInMyNominations(
+      authedUser,
+      imdbID,
+      nominations,
+  ),
 });
 
 // BtnGroup export
