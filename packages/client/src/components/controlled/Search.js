@@ -4,6 +4,7 @@ import {Component} from 'react';
 // Component imports
 import MovieCard from 'components/container/MovieCard';
 import omdbAPI from 'utils/omdbAPI';
+import {FaSearch} from 'react-icons/fa';
 
 /**
  * Search component
@@ -100,11 +101,12 @@ class Search extends Component {
               className="input-group-text bg-transparent
           border-0 text-primary--custom"
             >
-              <i className="fas fa-search"></i>
+              <FaSearch />
             </div>
           </div>
           <input
             type="search"
+            autoComplete="off"
             className="form-control form-control--custom
           rounded-pill py-1 dropdown-toggle"
             placeholder="Search movie..."
