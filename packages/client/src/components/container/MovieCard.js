@@ -1,12 +1,17 @@
 // Module imports
 import {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Component import
-import BtnGroup from 'components/presentation/BtnGroup';
+import BtnGroup from 'components/container/BtnGroup';
 
 // API import
 import omdbAPI from 'utils/omdbAPI';
+import {
+  getIfInMyNominations,
+  getIfNominatedByAuthedUser,
+} from 'redux/selectors';
 
 /**
  * MovieCard component
@@ -14,23 +19,15 @@ import omdbAPI from 'utils/omdbAPI';
  * @constructor
  *
  * @example
- * const authedUser=''
- * const ifNominatedByAuthedUser=''
- * const ifInMyNominations=false
  * const imdbID=''
  * const movie={}
  * const nomination={}
- * const onUpdateNomination=()=>{}
  * const xtraClassName={}
  *
  * return <MovieCard
- *          authedUser={authedUser}
- *          ifInMyNominations={ifInMyNominations}
- *          ifNominatedByAuthedUser={ifNominatedByAuthedUser}
  *          imdbID={imdbID}
  *          movie={movie}
  *          nomination={nomination}
- *          onUpdateNomination={onUpdateNomination}
  *          xtraClassName={xtraClassName}
  *        />
  */
@@ -41,13 +38,8 @@ class MovieCard extends Component {
 
   static propTypes = {
     /**
-     * MovieCard authedUser
-     */
-    authedUser: PropTypes.string,
-    /**
      * MovieCard ifInMyNominations
      */
-
     ifInMyNominations: PropTypes.bool,
     /**
      * MovieCard ifNominatedByAuthedUser
@@ -66,23 +58,16 @@ class MovieCard extends Component {
      */
     nomination: PropTypes.object,
     /**
-     * MovieCard onUpdateNomination
-     */
-    onUpdateNomination: PropTypes.func,
-    /**
      * MovieCard xtraClassName
      */
     xtraClassName: PropTypes.object,
   };
 
   static defaultProps = {
-    authedUser: '',
-    ifInMyNominations: false,
     ifNominatedByAuthedUser: false,
     imdbID: '',
     movie: {},
     nomination: {},
-    onUpdateNomination: () => {},
     xtraClassName: {},
   };
 
@@ -114,11 +99,9 @@ class MovieCard extends Component {
   render = () => {
     const {Genre, imdbID, Poster, Title, Year} = this.state.movie;
     const {
-      authedUser,
       ifInMyNominations,
       ifNominatedByAuthedUser,
       nomination,
-      onUpdateNomination,
       xtraClassName,
     } = this.props;
 
@@ -139,8 +122,9 @@ class MovieCard extends Component {
           <p className="lead text-truncate">
             <strong>{Title}</strong>
           </p>
-          <p>
-            <span className="badge badge-primary--custom text-white">
+          <p className="text-truncate">
+            <span className="badge badge-primary--custom
+            text-white">
               {Year} {this.props.imdbID && ` | ${Genre}`}
             </span>
           </p>
@@ -152,11 +136,11 @@ class MovieCard extends Component {
           )}
 
           <BtnGroup
-            authedUser={authedUser}
-            imdbID={imdbID}
-            ifNominatedByAuthedUser={ifNominatedByAuthedUser}
+            ifNominatedByAuthedUser={
+              this.props.imdbID ? ifNominatedByAuthedUser : ifInMyNominations
+            }
             ifInMyNominations={ifInMyNominations}
-            onUpdateNomination={onUpdateNomination}
+            imdbID={imdbID}
           />
         </div>
       </div>
@@ -164,5 +148,17 @@ class MovieCard extends Component {
   };
 }
 
+const mapStateToProps = (
+    {authedUser, nominations},
+    {movie, nomination},
+) => ({
+  ifInMyNominations: getIfInMyNominations(
+      authedUser,
+      movie?.imdbID,
+      nominations,
+  ),
+  ifNominatedByAuthedUser: getIfNominatedByAuthedUser(authedUser, nomination),
+});
+
 // MovieCard export
-export default MovieCard;
+export default connect(mapStateToProps)(MovieCard);

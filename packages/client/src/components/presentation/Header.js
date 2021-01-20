@@ -1,6 +1,3 @@
-// Moduel import
-import PropTypes from 'prop-types';
-
 // Component imports
 import Search from 'components/controlled/Search';
 
@@ -14,18 +11,10 @@ import 'assets/css/header.css';
  * @return {object} - The UI DOM object
  *
  * @example
- * const authedUser=''
- * const authedUserNominations=[]
- * const onUpdateNomination=()=>{}
  *
- * return <Header
- *          authedUser={authedUser}
- *          authedUserNominations={authedUserNominations}
- *          onUpdateNomination={onUpdateNomination}
- *        />
- *
+ * return <Header />
  */
-const Header = ({authedUser, authedUserNominations, onUpdateNomination}) => (
+const Header = () => (
   <header>
     <nav
       className="navbar navbar-expand navbar-light bg-transparent fixed-top"
@@ -41,11 +30,7 @@ const Header = ({authedUser, authedUserNominations, onUpdateNomination}) => (
             loading="lazy"
           />
         </a>
-        <Search
-          authedUser={authedUser}
-          authedUserNominations={authedUserNominations}
-          onUpdateNomination={onUpdateNomination}
-        />
+        <Search />
         <ul className="navbar-nav mr-auto ml-auto">
           <li className="nav-item">
             <a className="nav-link nav-link--custom" href="#nominations">
@@ -57,27 +42,6 @@ const Header = ({authedUser, authedUserNominations, onUpdateNomination}) => (
     </nav>
   </header>
 );
-
-Header.propTypes = {
-  /**
-   * Header authedUser
-   */
-  authedUser: PropTypes.string,
-  /**
-   * Header authedUserNominations
-   */
-  authedUserNominations: PropTypes.array,
-  /**
-   * Header onUpdateNomination
-   */
-  onUpdateNomination: PropTypes.func,
-};
-
-Header.defaultProps = {
-  authedUser: '',
-  authedUserNominations: [],
-  onUpdateNomination: () => {},
-};
 
 // Header export
 export default Header;

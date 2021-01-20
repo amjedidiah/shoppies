@@ -1,34 +1,34 @@
 // Module imports
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {FaThumbsUp, FaTrash} from 'react-icons/fa';
+
+// Action creator imports
+import {handleUpdateNominations} from 'redux/actions/nominations';
 
 /**
  * BtnGroup component
  * @component
+ * @param {{
+ *          authedUser: string,
+ *          handleUpdateNominations: function,
+ *          ifNominatedByAuthedUser: boolean,
+ *          ifInMyNominations: booelan,
+ *          imdbID: string}} props
  * @return {object} - The UI DOM object
  *
  * @example
- * const authedUser=''
  * const ifInMyNominations=false
- * const ifNominatedByAuthedUser = false
+ * const ifNominatedByAuthedUser=false
  * const imdbID=''
- * const onUpdateNomination=()=>{}
  *
  * return <BtnGroup
- *          authedUser={authedUser}
  *          ifInMyNominations={ifInMyNominations}
  *          ifNominatedByAuthedUser={ifNominatedByAuthedUser}
  *          imdbID={imdbID}
- *          onUpdateNomination={onUpdateNomination}
  *        />
  */
-const BtnGroup = ({
-  authedUser,
-  ifNominatedByAuthedUser,
-  ifInMyNominations,
-  imdbID,
-  onUpdateNomination,
-}) => (
+const BtnGroup = (props) => (
   <div>
     <p className="my-2">
       {['cancel', 'nominate'].map((action) => {
@@ -41,23 +41,24 @@ const BtnGroup = ({
          * @type {boolean}
          */
         const shouldDisplay =
-          (ifNominatedByAuthedUser && action === 'cancel') ||
-          (!ifNominatedByAuthedUser &&
-            !ifInMyNominations &&
+          (props.ifNominatedByAuthedUser && action === 'cancel') ||
+          (!props.ifNominatedByAuthedUser &&
+            !props.ifInMyNominations &&
             action === 'nominate');
 
         return (
           <button
             key={action}
             className={`btn btn-outline-${btnColor} ${
-              (!shouldDisplay ||
-                (ifNominatedByAuthedUser && action === 'nominate')) &&
-              'd-none'
+              !shouldDisplay && 'd-none'
             } rounded-pill text-uppercase`}
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              onUpdateNomination(action, {userID: authedUser, imdbID});
+              props.handleUpdateNominations(action, {
+                userID: props.authedUser,
+                imdbID: props.imdbID,
+              });
             }}
           >
             <span className="mr-2">
@@ -77,6 +78,10 @@ BtnGroup.propTypes = {
    */
   authedUser: PropTypes.string,
   /**
+   * BtnGroup handleUpdateNominations
+   */
+  handleUpdateNominations: PropTypes.func,
+  /**
    * BtnGroup ifInMyNominations
    */
   ifInMyNominations: PropTypes.bool,
@@ -88,19 +93,19 @@ BtnGroup.propTypes = {
    * BtnGroup imdbID
    */
   imdbID: PropTypes.string,
-  /**
-   * BtnGroup onUpdateNomination
-   */
-  onUpdateNomination: PropTypes.func,
 };
 
 BtnGroup.defaultProps = {
   authedUser: '',
+  handleUpdateNominations: () => {},
   ifInMyNominations: false,
   ifNominatedByAuthedUser: false,
   imdbID: '',
-  onUpdateNomination: () => {},
 };
 
+const mapStateToProps = ({authedUser}) => ({
+  authedUser,
+});
+
 // BtnGroup export
-export default BtnGroup;
+export default connect(mapStateToProps, {handleUpdateNominations})(BtnGroup);

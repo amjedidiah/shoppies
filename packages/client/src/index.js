@@ -1,14 +1,23 @@
+// Module imports
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'assets/css/index.css';
+import {Provider} from 'react-redux';
+import * as serviceWorkerRegistration from 'serviceWorkerRegistration';
+import reportWebVitals from 'reportWebVitals';
+
+// Component imports
 import App from 'components/container/App';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+
+// Asset imports
+import 'assets/css/index.css';
+
+// Store import
+import store from 'redux/store';
 
 ReactDOM.render(
-    <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </React.StrictMode>,
+    </Provider>,
     document.getElementById('root'),
 );
 

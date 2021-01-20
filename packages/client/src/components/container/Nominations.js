@@ -1,4 +1,5 @@
 // Module imports
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Component imports
@@ -6,47 +7,28 @@ import MovieCard from 'components/container/MovieCard';
 
 // Asset imports
 import 'assets/css/nominations.css';
+import {getAuthedUserNominations, getNominations} from 'redux/selectors';
 
 /**
  * @component
  * @return {object} - The UI DOm object
  *
  * @example
- * const authedUser = ''
- * const authedUserNominations = []
- * const nominations = []
- * const onUpdateNomination = () => {}
- *
- * return <Nominations
- *          authedUser={authedUser}
- *          authedUserNominations={authedUserNominations}
- *          nominations={nominations}
- *          onUpdateNomination={onUpdateNomination}
- *         />
+ * return <Nominations />
  */
-const Nominations = ({
-  authedUser,
-  authedUserNominations,
-  nominations,
-  onUpdateNomination,
-}) => {
+const Nominations = ({authedUser, authedUserNominations, nominations}) => {
   /**
    * Render nominations
    * @param {array} noms
+   * @param {string} [xtraClassName]
    * @return {object}
    */
-  const renderNoms = (noms = []) =>
+  const renderNoms = (noms = [], xtraClassName) =>
     noms.map((nomination) => (
-      <div key={nomination?._id} className="mb-4 nomination">
+      <div key={nomination?._id} className={`mb-4 nomination ${xtraClassName}`}>
         <MovieCard
-          authedUser={authedUser}
-          ifInMyNominations={authedUserNominations
-              .map((n) => n.imdbID)
-              .includes(nomination?.imdbID)}
-          ifNominatedByAuthedUser={nomination?.userID === authedUser}
           imdbID={nomination?.imdbID}
           nomination={nomination}
-          onUpdateNomination={onUpdateNomination}
           xtraClassName={{
             card: 'shadow',
             img: 'w-100',
@@ -77,7 +59,7 @@ const Nominations = ({
                 <h4 className="text-gold font-weight-bold">Your Nominations</h4>
 
                 <div className="d-flex flex-wrap mt-3 row--nomination">
-                  {renderNoms(authedUserNominations)}
+                  {renderNoms(authedUserNominations, 'nomination--yours')}
                 </div>
               </div>
             </div>
@@ -101,18 +83,19 @@ Nominations.propTypes = {
    * Nominations nominations
    */
   nominations: PropTypes.array,
-  /**
-   * Nominations onUpdateNomination
-   */
-  onUpdateNomination: PropTypes.func,
 };
 
 Nominations.defaultProps = {
   authedUser: '',
   authedUserNominations: [],
   nominations: [],
-  onUpdateNomination: () => {},
 };
 
+const mapStateToProps = ({authedUser, nominations}) => ({
+  authedUser,
+  authedUserNominations: getAuthedUserNominations(authedUser, nominations),
+  nominations: getNominations(nominations),
+});
+
 // Nominations export
-export default Nominations;
+export default connect(mapStateToProps)(Nominations);

@@ -1,6 +1,5 @@
 // Module imports
 import {Component} from 'react';
-import PropTypes from 'prop-types';
 
 // Component imports
 import MovieCard from 'components/container/MovieCard';
@@ -12,15 +11,8 @@ import omdbAPI from 'utils/omdbAPI';
  * @constructor
  *
  * @example
- * const authedUser=''
- * const authedUserNominations=[]
- * const onUpdateNomination=()=>{}
  *
- * return <Search
- *          authedUser={authedUser}
- *          authedUserNominations={authedUserNominations}
- *          onUpdateNomination={onUpdateNomination}
- *        />
+ * return <Search />
  */
 class Search extends Component {
   state = {
@@ -29,27 +21,6 @@ class Search extends Component {
     s: '',
     status: 'Type at least 3 characters to trigger a search...',
     totalResults: 0,
-  };
-
-  static propTypes = {
-    /**
-     * Search authedUser
-     */
-    authedUser: PropTypes.string,
-    /**
-     * Search authedUserNominations
-     */
-    authedUserNominations: PropTypes.array,
-    /**
-     * Search onUpdateNomination
-     */
-    onUpdateNomination: PropTypes.func,
-  };
-
-  static defaultProps = {
-    authedUser: '',
-    authedUserNominations: [],
-    onUpdateNomination: () => {},
   };
 
   /**
@@ -110,11 +81,6 @@ class Search extends Component {
    */
   render = () => {
     const {page, results, status, totalResults} = this.state;
-    const {
-      authedUser,
-      authedUserNominations,
-      onUpdateNomination,
-    } = this.props;
 
     /**
      * @type {string} - class for searchImages
@@ -169,13 +135,7 @@ class Search extends Component {
                 {results.map((movie) => (
                   <li key={movie?.imdbID} className="dropdown-item p-0 mb-3">
                     <MovieCard
-                      authedUser={authedUser}
-                      authedUserNominations={authedUserNominations}
-                      ifNominatedByAuthedUser={authedUserNominations.find(
-                          (m) => m.imdbID === movie.imdbID,
-                      )}
                       movie={movie}
-                      onUpdateNomination={onUpdateNomination}
                       xtraClassName={{
                         card: 'd-flex align-items-start',
                         img: imgClass,

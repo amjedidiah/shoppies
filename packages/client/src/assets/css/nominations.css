@@ -5,6 +5,7 @@
 
 .nomination {
   flex: 0 1 45.5%;
+  width: 45.5%;
   margin-right: 25px;
 }
 
@@ -19,6 +20,7 @@
 @media (min-width: 576px) {
   .nomination {
     flex-basis: 29.5%;
+    width: 29.5%;
   }
 }
 
@@ -37,6 +39,7 @@
 @media (min-width: 768px) {
   .nomination {
     flex-basis: 21.5%;
+    width: 21.5%;
   }
 }
 
@@ -55,12 +58,14 @@
 @media (min-width: 992px) {
   .nomination {
     flex-basis: 29%;
+    width: 29%;
   }
 }
 
 @media (min-width: 992px) {
   .nomination.nomination--yours {
     flex-basis: 100%;
+    width: 100%;
     margin-right: 0;
   }
 }
@@ -87,6 +92,7 @@
 @media (min-width: 1198px) {
   .nomination {
     flex-basis: 28.5%;
+    width: 28.5%;
   }
 }
 
@@ -99,6 +105,7 @@
 @media (min-width: 1198px) {
   .nomination.nomination--yours {
     flex-basis: 41.5%;
+    width: 41.5%;
   }
 }
 
