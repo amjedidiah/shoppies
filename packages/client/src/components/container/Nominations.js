@@ -24,19 +24,26 @@ const Nominations = ({authedUser, authedUserNominations, nominations}) => {
    * @return {object}
    */
   const renderNoms = (noms = [], xtraClassName) =>
-    noms.map((nomination) => (
-      <div key={nomination?._id} className={`mb-4 nomination ${xtraClassName}`}>
-        <MovieCard
-          imdbID={nomination?.imdbID}
-          nomination={nomination}
-          xtraClassName={{
-            card: 'shadow',
-            img: 'w-100',
-            info: 'p-2',
-          }}
-        />
-      </div>
-    ));
+    noms.length > 0 ? (
+      noms.map((nomination) => (
+        <div
+          key={nomination?._id}
+          className={`mb-4 nomination ${xtraClassName}`}
+        >
+          <MovieCard
+            imdbID={nomination?.imdbID}
+            nomination={nomination}
+            xtraClassName={{
+              card: 'shadow',
+              img: 'w-100',
+              info: 'p-2',
+            }}
+          />
+        </div>
+      ))
+    ) : (
+      <p>Nominate up to 5 movies to see them here...</p>
+    );
 
   return (
     <section id="nominations">
@@ -54,7 +61,7 @@ const Nominations = ({authedUser, authedUserNominations, nominations}) => {
             </div>
           </div>
           {authedUser && (
-            <div className="col-12 col-lg-3 col-xl-5">
+            <div className="col-12 col-lg-3 col-xl-5" id="myNominations">
               <div className="my-3 rounded">
                 <h4 className="text-gold font-weight-bold">Your Nominations</h4>
 
