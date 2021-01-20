@@ -37,8 +37,7 @@ Actions includes:
 ```bash
 git clone https://github.com/amjedidiah/shoppies.git shoppies
 cd shoppies
-lerna bootstrap --hoist --ignore-prepublish
-lerna run dev --parallel
+npx yarn dev
 ```
 
 ### Usage
@@ -55,7 +54,6 @@ The main folders are:
     |---client
 |----services
     |---api
-    |---omdbapi.js
 |---ui
 ```
 
