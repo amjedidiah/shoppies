@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // configure base url
 const shoppiesAPI = axios.create({
-  baseURL: 'http://localhost:8008/api',
+  baseURL: 'https://my-shoppies-api.herokuapp.com/api',
   timeout: 60000,
 });
 

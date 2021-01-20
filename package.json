@@ -10,7 +10,10 @@
     "test": "npx lerna run test",
     "predev": "npx lerna run --parallel check",
     "dev": "npx lerna run dev --parallel",
-    "start": "npx lerna run start --parallel"
+    "start": "npx lerna run start --parallel",
+    "deploy:api": "git subtree push --prefix services/api heroku master || true",
+    "deploy:client": "npx lerna run --parallel --scope shoppies-client deploy",
+    "deploy": "yarn deploy:api && yarn deploy:client"
   },
   "pre-commit": "predev",
   "devDependencies": {
