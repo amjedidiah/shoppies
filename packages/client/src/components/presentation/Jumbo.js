@@ -30,8 +30,12 @@ const Jumbo = () => (
             ></span>
           </h3>
           <p className="lead my-4">
+            Search a movie to nominate for the Shoppies award, or nominate one
+            from our recent nominations
+          </p>
+          <p>
             We honour the best. Every movie has a story, but a few become epics.
-            These are the ones we honour
+            These are the ones we honour.
           </p>
         </div>
         <div className="d-none d-lg-block col-lg offset-lg-1">

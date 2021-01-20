@@ -84,4 +84,4 @@ In the future, I hope to update my back-end skills, learn mobile and cloud-nativ
 Do you need a website or a web app for your business/idea, a web tutor, or a conference speaker?
 Send me an email: imunacode@gmail.com
 
-Skills: HTML5, React, Redux, Express, Node, PHP, PostgreSQL, MySQL
+Skills: HTML5, React, Redux, Express, Node, PHP, PostgreSQL, MongoDB, MySQL
