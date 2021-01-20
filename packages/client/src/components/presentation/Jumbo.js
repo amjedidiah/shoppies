@@ -11,10 +11,11 @@ import 'assets/css/jumbo.css';
  * return <Jumbo />
  */
 const Jumbo = () => (
-  <section className="jumbotron jumbotron-fluid bg-primary--custom text-white">
+  <section className="jumbotron jumbotron-fluid
+  bg-primary--custom text-white py-5">
     <h2 className="d-none">Jumbotron</h2>
-    <article className="container h-100">
-      <div className="row align-items-center h-100">
+    <article className="container py-5">
+      <div className="row align-items-center py-4 py-xl-0">
         <div className="col-12 col-lg-7">
           <h3 className="jumbo-title">
             Shoppies{' '}
@@ -39,7 +40,7 @@ const Jumbo = () => (
           </p>
         </div>
         <div className="d-none d-lg-block col-lg offset-lg-1">
-          <div className="img-holder pt-xl-5">
+          <div className="img-holder">
             <img src={award1} className="img-fluid" alt="award" />
           </div>
         </div>
